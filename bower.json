@@ -1,0 +1,18 @@
+{
+  "name": "iAdpot",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#2",
+    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1",
+    "paper-dropdown-menu": "^2.0.0",
+    "exm-token-input": "^1.0.17",
+    "paper-input": "^2.0.2",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0"
+  },
+  "resolutions": {
+    "paper-input": "^2.0.2",
+    "paper-button": "^2.0.0"
+  }
+}
