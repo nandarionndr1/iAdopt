@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteRule ^home?$ homepage.php
+
+RewriteRule ^home/Add-For-Adopt?$ AddPetAdoption.php
+
+RewriteRule ^sign-up$ signup.php
+
+RewriteRule ^profile/([a-zA-Z0-9_.-]+)?$ userProfile.php?oid=$1
+
+RewriteRule ^pets?$ animalCatalog.php
+RewriteRule ^pets/([a-zA-Z0-9_.-]+)?$ animalCatalogIndividual.php?oid=$1
+
+RewriteRule ^applications?$ adoptionApplication.php
+RewriteRule ^applications/([a-zA-Z0-9_.-]+)?$ acceptAdoptionApplication.php?oid=$1

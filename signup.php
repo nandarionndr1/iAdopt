@@ -1,16 +1,24 @@
 <?php
     include "curl_funcs.php";
     if(isset($_POST['submit'])){
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["artPhoto"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+        include 'upload.php';
+
+        $artifactImagePath = "uploads/" . $_FILES["artPhoto"]["name"];
 
         $a = array(
             'email'=> $_POST['em'],
-            'password'=> $_POST['ps'],
+            'password'=> $_POST['pss'],
             'name' => $_POST['nm'],
+            'photo_url' => "uploads/".$_FILES["artPhoto"]["name"],
             'usertype'=>'1'
         );
         curl_post('/db/accounts/',$a);
-        header("Location: http://localhost/iAdopt/homepageViewer.php");
-
+        header("Location: http://localhost/iAdopt/home");
     }
 ?>
 <!DOCTYPE html>
@@ -45,16 +53,20 @@
           <div class="card text-white p-5 bg-primary">
             <div class="card-body">
               <h1 class="mb-4">Sign-up form</h1>
-              <form action="" method="POST">
+              <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group"> <label>Email address</label>
-                  <input type="email" name="em" class="form-control" placeholder="Enter Email"> </div>
+                  <input type="email" name="em" class="form-control" placeholder="Enter Email" required> </div>
                 <div class="form-group"> <label>Full Name</label>
-                  <input type="text" name="nm" class="form-control" placeholder="FullName"> </div>
+                  <input type="text" name="nm" class="form-control" placeholder="FullName" required> </div>
                 <div class="form-group"> <label>Password</label>
-                  <input type="password" name="pss" class="form-control" placeholder="Password"> </div>
+                  <input type="password" name="pss" class="form-control" placeholder="Password" required> </div>
                 <div class="form-group"> <label>Confirm Password</label>
-                  <input type="password" class="form-control" placeholder="Password"> </div>
-                <button type="submit" name="submit" class="btn btn-secondary">Sign Up</button>
+                  <input type="password" class="form-control" placeholder="Password" required> </div>
+
+                  <input type='file' name='artPhoto' id="fileSelect2" onchange="showArtImage(this);" />
+                  <img id="artImage" src="" alt="" style="max-width: 30vw; max-height: 30vh" min-width="0px" min-height="0px" />
+                  <hr>
+                  <center><button type="submit" name="submit" class="btn btn-secondary btn-lg">Sign Up</button></center>
               </form>
             </div>
           </div>
@@ -94,5 +106,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
-
 </html>
+<script>
+    function showArtImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#artImage')
+                    .attr('src', e.target.result).style="display: inline;"
+                ;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

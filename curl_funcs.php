@@ -60,6 +60,22 @@ function curl_getByName($path,$name){
         }  
     }
 }
+function curl_getByemail($path,$name){
+
+    // e.g $path = /db/coll/ + id
+    $ch = curl_init('http://127.0.0.1:8080'.$path);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+    $ace = json_decode($response,true);
+    curl_close($ch);
+
+    foreach($ace['_embedded'] as $data){
+        if ($data['email'] == $name) {
+            return $data;
+        }
+    }
+}
 
 function curl_getByID($path,$id){
 

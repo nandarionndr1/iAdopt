@@ -1,4 +1,6 @@
 ﻿<?php
+session_start();
+
     include 'curl_funcs.php';
 
     if(isset($_POST['submit'])){
@@ -10,8 +12,8 @@
         include 'upload.php';
         $artifactImagePath = "uploads/" . $_FILES["artPhoto"]["name"];
 
-
         $a = array(
+            'oid'=>$_SESSION['oid'],
             'name'=>$_POST['name'],
             'age'=>$_POST['age'],
             'type'=>$_POST['type'],
@@ -19,9 +21,14 @@
             'gender'=>$_POST['gender'],
             'reason'=>$_POST['reason'],
             'xtra'=>$_POST['xtra'],
+            'postdate'=>date("Y/m/d"),
+            'status'=>'pending', // put into pending later
             'photo_url'=>"uploads/".$_FILES["artPhoto"]["name"]
         );
-        curl_post('/db/doggos/', $a);
+        curl_post('/db/pets/', $a);
+
+        //AIzaSyB3Fgc5t0ztFJHt-lyQ1YrJK75ArTI3zEA api key
+
     }
 ?>
 <!DOCTYPE html>
@@ -51,6 +58,8 @@
   <link rel="import" href="bower_components/exm-token-input/exm-expand-animation.html">
 
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/jsvv=3.exp&sensor=false&libraries=places"></script>
+
     <style>
   #uploader {
     --preview-border: 1px dashed green;
@@ -74,29 +83,54 @@
   }
 
 </style>
+
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <style>
+        #locationField, #controls {
+            position: relative;
+            width: 480px;
+        }
+        #autocomplete {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 99%;
+        }
+        .label {
+            text-align: right;
+            font-weight: bold;
+            width: 100px;
+            color: #303030;
+        }
+        #address {
+            border: 1px solid #000090;
+            background-color: #f0f0ff;
+            width: 480px;
+            padding-right: 2px;
+        }
+        #address td {
+            font-size: 10pt;
+        }
+        .field {
+            width: 99%;
+        }
+        .slimField {
+            width: 80px;
+        }
+        .wideField {
+            width: 200px;
+        }
+        #locationField {
+            height: 20px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="homepageUser.php">iAdopt</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="AddPetAdoption.php"><i class="fa d-inline fa-lg fa-github"></i>&nbsp; Add Pet for Adoption</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="findPet.html"><i class="fa d-inline fa-lg fa-search"></i>&nbsp; &nbsp;Find a Pet</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="animalCatalog.html"><i class="fa d-inline fa-lg fa-eye"></i>&nbsp; &nbsp;Animal Catalog</a>
-          </li>
-        </ul>
-        <a class="btn navbar-btn btn-primary ml-2 text-white" href="homepageView.html"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Sign Out</a>
-      </div>
-    </div>
-  </nav>
+    <?php include 'navbar.php'?>
     
     
   <div class="py-5  opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);">
@@ -174,9 +208,24 @@
                     </bwt-uploader>
                     -->
                     <label for="sel1">Upload Artifact Image</label><br>
-                    <input type='file' name='artPhoto' id="fileSelect2" onchange="showArtImage(this);" />
+                    <input type='file' name='artPhoto' id="fileSelect2" onchange="showArtImage(this);" required />
                     <img id="artImage" src="" alt="" style="max-width: 300px; max-height: 300px" min-width="0px" min-height="0px" />
+
+                    <label for="locationTextField">Location</label>
+                    <input id="locationTextField" type="text" size="50">
+
+                    <script>
+                        function init() {
+                            var input = document.getElementById('locationTextField');
+                            var autocomplete = new google.maps.places.Autocomplete(input);
+                        }
+
+                        google.maps.event.addDomListener(window, 'load', init);
+                    </script>
+
+
                 </center>
+
             </div>
           </div>
         </div>
@@ -234,6 +283,8 @@
 </body>
 </html>
 <script>
+
+
     function showArtImage(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
