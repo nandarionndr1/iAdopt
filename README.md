@@ -1,11 +1,11 @@
 # iAdopt: How to use
-#### by Piolo Barleta, Mark Barraquias, Jason Deichmann, Jennifer Ibay, Justine Singca, Fred Purisima
+#### by Piolo Barleta, Mark Barraquias @nandarionndr1, Jason Deichmann @JasonDeichmann, Jennifer Ibay, Justine Singca @justinyoungie, Fred Purisima
 ####
 ## 1. install the following dependencies
 
-### - mongoDB
-### - XAMPP
-### - restHeart.zip
+- [x] mongoDB
+- [x] XAMPP
+- [x] restHeart.zip
 
 ## 2. clone project
 - $ git clone https://www.github.com/nandarionndr1/iAdopt.git 
@@ -24,8 +24,5 @@
 
 ## 4. Run Apache server and type “http://localhost/iAdopt/home” in the browser
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
+
 
