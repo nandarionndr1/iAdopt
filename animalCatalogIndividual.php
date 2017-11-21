@@ -19,8 +19,9 @@
     <link rel="import" href="http://localhost/iAdopt/bower_components/polymer/polymer-element.html">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="http://localhost/iAdopt/animalCatalog.css" type="text/css">
-
+    <style>
+        <?include 'animalCatalog.css'?>
+    </style>
     <link rel="import" href="http://localhost/iAdopt/bower_components/iron-icon/iron-icon.html">
     <link rel="import" href="http://localhost/iAdopt/bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="http://localhost/iAdopt/bower_components/paper-input/paper-input.html">
@@ -31,8 +32,10 @@
 <body>
   <!-------------------------------------------------------------- NAVIGATION BAR --------------------------------------------------------------->
   <?php
-    require "navbar.php";
+
     include 'curl_funcs.php';
+
+    require "navbar.php";
     // ^pets/([a-zA-Z0-9_.-]+)
 
       if (isset($_POST['end'])){
@@ -72,8 +75,12 @@
                       <button type="submit" class="btn btn-fill btn-danger" style="width: 100%;" name="end" id="end">End Adoption</button>
                   </form>
               <?php }else{ ?>
+                    <form action="" method="post">
+                        <input name="senderEmail" value="<?php echo $_SESSION['email']; ?>" hidden/>
+                        <input name="receiverEmail" value="<?php echo $owner['email']; ?>" hidden/>
+                        <button type="submit" class="btn btn-fill btn-primary" id="submitEmail" name="submitEmail">I'm interested!</button>
+                    </form>
 
-                  <a href="#" class="card-link">I'm interested!</a>
               <?php }?>
 
                   <p class="card-text">
@@ -130,10 +137,19 @@
     </div>
   </div>
 
+<?php
+include "PHPMailer/mail.php";
+?>
+
 <center><div id="disqus_thread" style="width:75vw;"></div>
 </center>
 
 <script>
+
+function submitEmail(){
+    document.getElementById("submitEmail").submit();
+}
+
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.

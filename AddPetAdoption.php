@@ -41,7 +41,9 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="homepageViewer.css" type="text/css"> 
+    <style>
+        <?include 'homepageViewer.css'?>
+    </style>
   <link rel="import" href="bower_components/polymer/polymer-element.html">
   <link rel="import" href="bower_components/paper-input/paper-input.html">
   <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
@@ -85,7 +87,9 @@ session_start();
 </style>
 
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
     <style>
+        <?include 'homepageViewer.css'?>
         #locationField, #controls {
             position: relative;
             width: 480px;
@@ -131,8 +135,6 @@ session_start();
 
 <body>
     <?php include 'navbar.php'?>
-    
-    
   <div class="py-5  opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);">
     <div class="container">
       <div class="row">
@@ -207,21 +209,9 @@ session_start();
                     <bwt-uploader name="upload" id="imgUploader" theme="square" target="https://httpbin.org/post" body="[[body]]" header="[[header]]" method="POST">
                     </bwt-uploader>
                     -->
-                    <label for="sel1">Upload Artifact Image</label><br>
                     <input type='file' name='artPhoto' id="fileSelect2" onchange="showArtImage(this);" required />
                     <img id="artImage" src="" alt="" style="max-width: 300px; max-height: 300px" min-width="0px" min-height="0px" />
 
-                    <label for="locationTextField">Location</label>
-                    <input id="locationTextField" type="text" size="50">
-
-                    <script>
-                        function init() {
-                            var input = document.getElementById('locationTextField');
-                            var autocomplete = new google.maps.places.Autocomplete(input);
-                        }
-
-                        google.maps.event.addDomListener(window, 'load', init);
-                    </script>
 
 
                 </center>

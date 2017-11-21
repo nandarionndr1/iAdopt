@@ -7,7 +7,7 @@ include 'curl_funcs.php';
 if (isset($_POST['login'])){
     $email = $_POST['email'];
 
-    $user = curl_getByemail('/db/accounts/', $email);
+    $user = curl_getByEmail('/db/accounts/', $email);
 
     $password = $user['password'];
     $email = $user['email'];
@@ -37,7 +37,9 @@ if (isset($_POST['login'])){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="homepageViewer.css" type="text/css"> </head>
-
+<style>
+    <?include 'homepageViewer.css'?>
+</style>
 <body>
   <!-------------------------------------------------------------- NAVIGATION BAR --------------------------------------------------------------->
 <?php if(!isset($_SESSION['name'])){?>
@@ -52,7 +54,7 @@ if (isset($_POST['login'])){
 
       <!-------------------------------------------------------------- START OF BODY ------------------------------------------------------------->
 
-  <div class="py-5 text-center opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_event.jpg&quot;);">
+  <div class="py-5 text-center opaque-overlay" style="background-image: url('uploads/DogAndCatOnBed850.jpg');">
       <div class="container py-5">
           <div class="row">
               <div class="col-md-6">
@@ -82,7 +84,7 @@ if (isset($_POST['login'])){
 else {
     include 'navbar.php';
     ?>
-    <div class="py-5 text-center opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_event.jpg&quot;);">
+    <div class="py-5 text-center opaque-overlay" style="background-image: url('uploads/dog-kitten.jpg');">
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-6">
@@ -90,7 +92,7 @@ else {
                     <p class="lead text-left" style="color:white;">We provide people an avenue for pets needing some luv and care. We have guarantees that all these pets are loving nd will be good pets for you. Pick the <b>right pet for you</b>.</p>
                 </div>
                 <div class="col-md-6 text-black text-left p-5" style="background-color:#fff">
-                    <h1 class="text-left">Welcome, <?php echo $_SESSION['name']. '  '. $_SESSION['oid']?></h1>
+                    <h1 class="text-left">Welcome, <?php echo $_SESSION['name'];?></h1>
                     <p class="lead text-left" style="color:black;">Adopt one now! Who knows? Maybe you are their next home.</p>
                 </div>
             </div>

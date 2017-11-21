@@ -27,7 +27,11 @@ foreach ($ace as $data){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="animalCatalog.css" type="text/css"> </head>
+    <style>
+        <?include 'animalCatalog.css'?>
+    </style>
+
+</head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 

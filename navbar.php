@@ -29,13 +29,16 @@ if (!isset($_SESSION['name'])){
 
 <nav class="navbar navbar-expand-md bg-primary navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="http://localhost/iAdopt/home">iAdopt</a>
+        <a class="navbar-brand" href="http://localhost/iAdopt/home"><img src="http://localhost/iAdopt/iAdopt_logo.png" style="width: 40%;"></a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="AddPetAdoption.php"><i class="fa d-inline fa-lg fa-github"></i>Add For Adoption</a>
+                    <a class="nav-link" href="http://localhost/iAdopt/chat.php"><i class="fa d-inline fa-lg fa-wechat"></i>Chat With Others</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/iAdopt/AddPetAdoption.php"><i class="fa d-inline fa-lg fa-github"></i>Add For Adoption</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/iAdopt/pets"><i class="fa d-inline fa-lg fa-eye"></i>Catalog</a>

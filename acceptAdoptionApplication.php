@@ -38,8 +38,9 @@ if (isset($_POST['accept'])){
     <link rel="import" href="http://localhost/iAdopt/bower_components/polymer/polymer-element.html">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="http://localhost/iAdopt/animalCatalog.css" type="text/css">
-
+    <style>
+        <?include 'animalCatalog.css'?>
+    </style>
     <link rel="import" href="http://localhost/iAdopt/bower_components/iron-icon/iron-icon.html">
     <link rel="import" href="http://localhost/iAdopt/bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="http://localhost/iAdopt/bower_components/paper-input/paper-input.html">

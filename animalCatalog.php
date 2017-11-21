@@ -24,7 +24,7 @@ curl_patch("/db/accounts/5a130113a0c38faf52ef6c69",$a);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="animalCatalog.css" type="text/css"> </head>
+  <link rel="stylesheet" href="http://localhost/iAdopt/animalCatalog.css" type="text/css"> </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Product+Sans" rel="stylesheet" type="text/css">
@@ -43,6 +43,9 @@ curl_patch("/db/accounts/5a130113a0c38faf52ef6c69",$a);
     });
 
 </script>
+<style>
+    <?include 'animalCatalog.css'?>
+</style>
 <body ng-app="myEtits" ng-controller="tite">
 <style>
 
@@ -156,7 +159,8 @@ if (!isset($_SESSION['name'])){
 ?>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="http://localhost/iAdopt/home">iAdopt</a>
+        <a class="navbar-brand" href="http://localhost/iAdopt/home"><img src="http://localhost/iAdopt/iAdopt_logo.png" style="width: 40%;"></a>
+
         <input type="text" class="form-control" id="myInput" placeholder="Search" ng-model="markWeap" >
 
 

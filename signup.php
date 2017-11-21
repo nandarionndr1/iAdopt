@@ -15,7 +15,7 @@
             'password'=> $_POST['pss'],
             'name' => $_POST['nm'],
             'photo_url' => "uploads/".$_FILES["artPhoto"]["name"],
-            'usertype'=>'1'
+            'usertype'=>'2'
         );
         curl_post('/db/accounts/',$a);
         header("Location: http://localhost/iAdopt/home");
@@ -35,7 +35,7 @@
   <!-------------------------------------------------------------- NAVIGATION BAR --------------------------------------------------------------->
   <nav class="navbar navbar-expand-md bg-primary navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="homepageViewer.scss">iAdopt</a>
+      <a class="navbar-brand" href="http://localhost/iAdopt/home">iAdopt</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav"></ul>
