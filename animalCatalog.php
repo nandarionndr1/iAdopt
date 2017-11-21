@@ -17,8 +17,20 @@ curl_patch("/db/accounts/5a130113a0c38faf52ef6c69",$a);
 */
 
 ?>
-<html>
+<?php
 
+if (isset($_POST['signout'])){
+    session_unset();
+    session_destroy();
+    header('Location: http://localhost/iAdopt/home');
+}
+if (!isset($_SESSION['name'])){
+    header('Location: http://localhost/iAdopt/home');
+}
+?>
+
+
+<html>
 <head>
     <title>iAdopt | Animal Catalog</title>
   <meta charset="utf-8">
@@ -147,16 +159,7 @@ curl_patch("/db/accounts/5a130113a0c38faf52ef6c69",$a);
     }
 </style>
   <!-------------------------------------------------------------- NAVIGATION BAR --------------------------------------------------------------->
-<?php
 
-if (isset($_POST['signout'])){
-    session_unset();
-    session_destroy();
-}
-if (!isset($_SESSION['name'])){
-    header('Location: http://localhost/iAdopt/home');
-}
-?>
 <nav class="navbar navbar-expand-md bg-primary navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="http://localhost/iAdopt/home"><img src="http://localhost/iAdopt/iAdopt_logo.png" style="width: 40%;"></a>
@@ -211,11 +214,11 @@ if (!isset($_SESSION['name'])){
 
                        <hr>
 
-                            <form method="post" action="">
-                            <button name="signout" type="submit" class="btn navbar-btn btn-primary ml-2 ">
-                                Sign-out
-                            </button>
-                       </form>
+                           <form method="post" action="">
+                                <button name="signout" type="submit" class="btn navbar-btn btn-primary ml-2 ">
+                                    Sign-out
+                                </button>
+                           </form>
                        </div>
 
                    </div>'
@@ -335,5 +338,4 @@ if (!isset($_SESSION['name'])){
         ];
     });
 </script>
-
 </html>

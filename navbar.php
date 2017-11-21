@@ -3,10 +3,11 @@
 if (isset($_POST['signout'])){
     session_unset();
     session_destroy();
+    header('Location: http://localhost/iAdopt/home');
 }
 if (!isset($_SESSION['name'])){
     header('Location: http://localhost/iAdopt/home');
-}
+}else{
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -93,3 +94,4 @@ if (!isset($_SESSION['name'])){
         </div>
     </div>
 </nav>
+<?php } ?>

@@ -36,13 +36,17 @@ if (isset($_POST['login'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="homepageViewer.css" type="text/css"> </head>
-<style>
-    <?include 'homepageViewer.css'?>
-</style>
+
+
+
 <body>
   <!-------------------------------------------------------------- NAVIGATION BAR --------------------------------------------------------------->
 <?php if(!isset($_SESSION['name'])){?>
+    <style>
+        <?
+        include_once 'homepageViewer.css';
+        ?>
+    </style>
   <nav class="navbar navbar-expand-md bg-primary navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="">iAdopt</a>
@@ -82,8 +86,13 @@ if (isset($_POST['login'])){
   </div>
 <?php }
 else {
-    include 'navbar.php';
+    include_once 'navbar.php';
     ?>
+    <style>
+        <?
+        include_once 'homepageViewer.css';
+        ?>
+    </style>
     <div class="py-5 text-center opaque-overlay" style="background-image: url('uploads/dog-kitten.jpg');">
         <div class="container py-5">
             <div class="row">

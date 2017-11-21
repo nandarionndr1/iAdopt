@@ -41,9 +41,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <style>
-        <?include 'homepageViewer.css'?>
-    </style>
+
   <link rel="import" href="bower_components/polymer/polymer-element.html">
   <link rel="import" href="bower_components/paper-input/paper-input.html">
   <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
@@ -89,7 +87,7 @@ session_start();
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 
     <style>
-        <?include 'homepageViewer.css'?>
+
         #locationField, #controls {
             position: relative;
             width: 480px;
@@ -135,6 +133,9 @@ session_start();
 
 <body>
     <?php include 'navbar.php'?>
+    <style>
+        <?include 'homepageViewer.css'?>
+    </style>
   <div class="py-5  opaque-overlay" style="background-image: url(&quot;https://pingendo.github.io/templates/sections/assets/cover_restaurant.jpg&quot;);">
     <div class="container">
       <div class="row">
